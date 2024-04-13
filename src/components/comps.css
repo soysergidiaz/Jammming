@@ -1,0 +1,14 @@
+.search-bar h2 {
+    text-align: center;
+    color: white;
+    font-size: 1.8em;
+  }
+  
+  .search-bar input {
+    height: 50px;
+    width: 1000px;
+    font-size: 28px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    user-select: none;
+  }

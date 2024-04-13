@@ -14,3 +14,12 @@ header h1 {
 header h1 span {
   color: #1ED760;
 }
+
+.search-bar {
+  height: 150px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
