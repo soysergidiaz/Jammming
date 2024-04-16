@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEvent} from 'react';
 import Track from './Track';
 
 function Tracklist() {
@@ -15,12 +15,14 @@ function Tracklist() {
         album: "Un día en suburbia",
         id: 2
     }
-  ])
+  ]);
 
   return (
-    <div>
+    <div className='tracklist'>
 
-      <Track title={song[0].title} author={song[0].author} album={song[0].album} />
+      {song.map((each) => (
+        <Track title={each.title} author={each.author} album={each.album} key={each.id} />
+      ))}
       
     </div>
   )
