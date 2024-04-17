@@ -1,11 +1,11 @@
 import React from 'react'
 import Tracklist from './Tracklist'
 
-function SearchResults() {
+function SearchResults({songs}) {
   return (
     <div>
 
-      <Tracklist />
+      <Tracklist songs={songs} />
       
     </div>
   )
