@@ -15,11 +15,10 @@ header h1 span {
   color: #1ED760;
 }
 
-.search-bar {
-  height: 150px;
+.program {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  grid-gap: 25px;
 }

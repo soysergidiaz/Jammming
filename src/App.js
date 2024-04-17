@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar.jsx';
-import './components/comps.css';
-import Tracklist from './components/Tracklist';
+import SearchResults from './components/SearchResults.jsx';
 import Playlist from './components/Playlist.jsx';
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
       </div>
 
       <div className='program'>
-        <Tracklist />
+        <SearchResults />
         <Playlist />
       </div>
     </>

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './styles/Track.css';
 
 function Track(props) {
   return (
@@ -9,9 +10,6 @@ function Track(props) {
         <p>{props.author} | {props.album}</p>
       </div>
 
-      <button className='add-button'>+</button>
-
-      
     </div>
   )
 }

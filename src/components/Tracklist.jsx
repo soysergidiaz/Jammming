@@ -1,4 +1,5 @@
 import React, {useState, useEvent} from 'react';
+import './styles/Tracklist.css';
 import Track from './Track';
 
 function Tracklist() {
@@ -21,7 +22,10 @@ function Tracklist() {
     <div className='tracklist'>
 
       {song.map((each) => (
-        <Track title={each.title} author={each.author} album={each.album} key={each.id} />
+        <>
+          <Track title={each.title} author={each.author} album={each.album} key={each.id} />
+          <button className='add-button'>+</button>
+        </>
       ))}
       
     </div>
