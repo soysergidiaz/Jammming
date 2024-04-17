@@ -22,10 +22,10 @@ function Tracklist() {
     <div className='tracklist'>
 
       {song.map((each) => (
-        <>
+        <div className='song'>
           <Track title={each.title} author={each.author} album={each.album} key={each.id} />
           <button className='add-button'>+</button>
-        </>
+        </div>
       ))}
       
     </div>
