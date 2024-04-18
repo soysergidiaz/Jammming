@@ -2,15 +2,15 @@ import React from 'react';
 import './styles/Tracklist.css';
 import Track from './Track';
 
-function Tracklist({songs}) {
+function Tracklist(props) {
 
   return (
     <div className='tracklist'>
 
-      {songs.map((each) => (
-        <div className='song'>
+      {props.song.map((each, index) => (
+        <div key={index} className='song'>
           <Track title={each.title} author={each.author} album={each.album} key={each.id} />
-          <button value={[each.title, each.author, each.album]} className='add-button'>+</button>
+          <button onClick={()=>props.onAdd(each)} className='add-button'>{props.text}</button>
         </div>
       ))}
       

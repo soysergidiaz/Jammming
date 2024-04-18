@@ -1,22 +1,22 @@
-.tracklist {
+.search-results .tracklist {
     min-height: 300px;
     width: 100%;
     margin: 30px auto;
 }
 
-.tracklist {
+.search-results .tracklist {
     background-color: #121212;
     color: white;
 }
 
-.song {
+.search-results .song {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #242424;
 }
 
-.add-button {
+.search-results .add-button {
     width: 30px;
     background-color: #1ED760;
     border: none;
@@ -24,7 +24,7 @@
     margin-right: 10px;
 }
 
-.add-button:hover {
+.search-results .add-button:hover {
     background-color: #0d8135;
     cursor: pointer;
 }

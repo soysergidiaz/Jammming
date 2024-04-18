@@ -32,6 +32,30 @@
     border-radius: 15px;
     width: fit-content;
     padding: 5px 60px;
-    margin-top: 20px;
+    margin: 20px 0px;
     font-size: 25px;
   }
+
+.playlist .tracklist {
+  width: 100%;
+}
+
+.playlist .song {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #242424;
+}
+
+.playlist .add-button {
+    width: 30px;
+    background-color: #d71e1e;
+    border: none;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.playlist .add-button:hover {
+    background-color: #850808;
+    cursor: pointer;
+}

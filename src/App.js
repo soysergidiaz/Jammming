@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar.jsx';
 import SearchResults from './components/SearchResults.jsx';
@@ -27,10 +27,16 @@ function App() {
   ]);
 
   const [playlist, setPlaylist] = useState([]);
+  const [playlistTitle, setPlaylistTitle] = useState('Playlist Name');
 
-  const addSong = () => {
-    
-  }
+  const addSong = (song) => setPlaylist((current) => {
+    if(current.some(element => element.id === song.id)){
+      return [...current];
+    } else {
+    return [...current, song]}
+  });
+
+  const removeSong = (song) => setPlaylist((current) => current.filter(track => track !== song));
 
   return (
     <>
@@ -43,8 +49,8 @@ function App() {
       </div>
 
       <div className='program'>
-        <SearchResults songs={song} onAdd={addSong} />
-        <Playlist />
+        <SearchResults song={song} onAdd={addSong} text="+" />
+        <Playlist playlistTitle={playlistTitle} setPlaylistTitle={setPlaylistTitle} playlist={playlist} onAdd={removeSong} text="-" />
       </div>
     </>
   );
