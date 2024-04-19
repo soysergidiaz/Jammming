@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar.jsx';
 import SearchResults from './components/SearchResults.jsx';
@@ -12,7 +12,7 @@ const [playlist, setPlaylist] = useState([]);
 const [playlistTitle, setPlaylistTitle] = useState('Playlist Name');
 
 const addSong = (song) => setPlaylist((current) => {
-  if(current.some(element => element.data.uri === song.data.uri)){
+  if(current.some(element => element.uri === song.uri)){
     return [...current];
   } else {
   return [...current, song]}
@@ -22,24 +22,36 @@ const removeSong = (song) => setPlaylist((current) => current.filter(track => tr
 
 //const songsUris = playlist.map((song) => song.uri);
 
-async function getSongs(search) {
+const [token, setToken] = useState('');
+const clientID = '47dc98e7d16744ac983392be8a5f06f8';
+const secretID = '60d908d5170040678d43034ea31b5a15';
 
-  const url = `https://spotify23.p.rapidapi.com/search/?q=${search}&type=tracks&offset=0&limit=20&numberOfTopResults=5`;
-  const options = {
+useEffect(()=>{
+  const urlToken = "https://accounts.spotify.com/api/token";
+  const authInfo = {
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: `grant_type=client_credentials&client_id=${clientID}&client_secret=${secretID}`
+  }
+  fetch(urlToken, authInfo)
+    .then((result) => result.json())
+    .then((data) => setToken(data))
+  ;
+}, []);
+
+async function getSongs(search) {
+  const url = 'https://api.spotify.com/v1/search?q=' + search + '&type=track&limit=20';
+  const authInfo = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': '590f718923msh0ba43159ed0cecep1662f1jsn5c9b843806f6',
-        'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+      'Authorization': 'Bearer ' + token.access_token
     }
-  };
-
-  try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      setSong(result.tracks.items);
-  } catch (error) {
-      console.log(`Ha habido un error: ${error}`);
   }
+  const result = await fetch(url, authInfo);
+  const songs = await result.json();
+  setSong(songs.tracks.items);
 }
 
 return (

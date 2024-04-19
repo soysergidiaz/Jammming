@@ -4,8 +4,6 @@ import Tracklist from './Tracklist';
 
 function Playlist(props) {
 
-  const [playlistTitle, setPlaylistTitle] = useState('Playlist Name');
-
   return (
     <div className='playlist'>
 

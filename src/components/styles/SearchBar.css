@@ -1,7 +1,7 @@
 .search-bar {
     height: 150px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,4 +20,27 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     user-select: none;
+}
+
+.buscador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buscador button {
+    width: 150px;
+    margin-top: 15px;
+    font-size: 24px;
+    border-radius: 10px;
+    background-color: #64D762;
+    border: none;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+.buscador button:hover {
+    cursor: pointer;
+    background-color: #0d8135;
+    color: white;
 }

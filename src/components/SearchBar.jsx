@@ -14,7 +14,7 @@ function SearchBar(props) {
     <div>
 
         <h2>Busca una canción</h2>
-        <form onSubmit={handleSearch}>
+        <form className='buscador' onSubmit={handleSearch}>
           <input type="text" id='songs-finder' onChange={(event)=> setSearch(event.target.value)} />
           <button type="submit">Buscar</button>
         </form>
