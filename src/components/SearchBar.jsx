@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styles/SearchBar.css';
 
-function SearchBar() {
+function SearchBar(props) {
+
+  const [search, setSearch] = useState('');
+
+  function handleSearch(event) {
+    event.preventDefault();
+    props.getSongs(search);
+  }
+
   return (
     <div>
 
         <h2>Busca una canción</h2>
-        <input type="text" id='songs-finder' />
+        <form onSubmit={handleSearch}>
+          <input type="text" id='songs-finder' onChange={(event)=> setSearch(event.target.value)} />
+          <button type="submit">Buscar</button>
+        </form>
       
     </div>
   )
