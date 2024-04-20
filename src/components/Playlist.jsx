@@ -10,7 +10,7 @@ function Playlist(props) {
       
       <input type="text" className='playlist-title' value={props.playlistTitle} onChange={({target}) => props.setPlaylistTitle(target.value)} />
       <Tracklist song={props.playlist} onAdd={props.onAdd} text={props.text} />
-      <button type='submit'>Submit</button>
+      <button type='submit' onClick={props.sendPlaylist}>Submit</button>
       
       
     </div>

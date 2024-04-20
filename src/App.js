@@ -35,6 +35,13 @@ async function getSongs(search) {
   }
 }
 
+async function sendPlaylist() {
+  await Spotify.sendPlaylist(playlistTitle, songUris);
+  setSongUris([]);
+  setPlaylist([]);
+  setPlaylistTitle('New Playlist');
+}
+
 return (
   <>
     <header>
@@ -47,7 +54,7 @@ return (
 
     <div className='program'>
       <SearchResults song={song} onAdd={addSong} text="+" />
-      <Playlist playlistTitle={playlistTitle} setPlaylistTitle={setPlaylistTitle} playlist={playlist} onAdd={removeSong} text="-" />
+      <Playlist sendPlaylist={sendPlaylist} playlistTitle={playlistTitle} setPlaylistTitle={setPlaylistTitle} playlist={playlist} onAdd={removeSong} text="-" />
     </div>
   </>
 );
