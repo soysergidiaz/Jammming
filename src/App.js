@@ -10,7 +10,7 @@ function App() {
 const [song, setSong] = useState([]);
 const [playlist, setPlaylist] = useState([]);
 const [playlistTitle, setPlaylistTitle] = useState('Playlist Name');
-const [userId, setUserId] = useState();
+const [songUris, setSongUris] = useState([]);
 
 //Función para añadir canciones
 const addSong = (song) => setPlaylist((current) => {
@@ -22,6 +22,10 @@ const addSong = (song) => setPlaylist((current) => {
 
 //Función para eliminar canciones de la playlist
 const removeSong = (song) => setPlaylist((current) => current.filter(track => track !== song));
+
+useEffect(()=>{
+  setSongUris(playlist.map(song => song.uri));
+}, [playlist]);
 
 // Función para obtener canciones y enviarlas al Tracklist
 async function getSongs(search) {

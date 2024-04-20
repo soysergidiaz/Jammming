@@ -7,9 +7,11 @@ function Playlist(props) {
   return (
     <div className='playlist'>
 
+      
       <input type="text" className='playlist-title' value={props.playlistTitle} onChange={({target}) => props.setPlaylistTitle(target.value)} />
       <Tracklist song={props.playlist} onAdd={props.onAdd} text={props.text} />
       <button type='submit'>Submit</button>
+      
       
     </div>
   )
