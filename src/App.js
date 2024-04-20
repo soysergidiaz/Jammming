@@ -3,14 +3,16 @@ import './App.css';
 import SearchBar from './components/SearchBar.jsx';
 import SearchResults from './components/SearchResults.jsx';
 import Playlist from './components/Playlist.jsx';
+import Spotify from './Spotify.js';
 
 function App() {
 
-  const [song, setSong] = useState([]);
-
+const [song, setSong] = useState([]);
 const [playlist, setPlaylist] = useState([]);
 const [playlistTitle, setPlaylistTitle] = useState('Playlist Name');
+const [userId, setUserId] = useState();
 
+//Función para añadir canciones
 const addSong = (song) => setPlaylist((current) => {
   if(current.some(element => element.uri === song.uri)){
     return [...current];
@@ -18,40 +20,15 @@ const addSong = (song) => setPlaylist((current) => {
   return [...current, song]}
 });
 
+//Función para eliminar canciones de la playlist
 const removeSong = (song) => setPlaylist((current) => current.filter(track => track !== song));
 
-//const songsUris = playlist.map((song) => song.uri);
-
-const [token, setToken] = useState('');
-const clientID = '47dc98e7d16744ac983392be8a5f06f8';
-const secretID = '60d908d5170040678d43034ea31b5a15';
-
-useEffect(()=>{
-  const urlToken = "https://accounts.spotify.com/api/token";
-  const authInfo = {
-      method: 'POST',
-      headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: `grant_type=client_credentials&client_id=${clientID}&client_secret=${secretID}`
-  }
-  fetch(urlToken, authInfo)
-    .then((result) => result.json())
-    .then((data) => setToken(data))
-  ;
-}, []);
-
+// Función para obtener canciones y enviarlas al Tracklist
 async function getSongs(search) {
-  const url = 'https://api.spotify.com/v1/search?q=' + search + '&type=track&limit=20';
-  const authInfo = {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer ' + token.access_token
-    }
+  const canciones = await Spotify.getSongs(search);
+  if (canciones) {
+    setSong(canciones);
   }
-  const result = await fetch(url, authInfo);
-  const songs = await result.json();
-  setSong(songs.tracks.items);
 }
 
 return (

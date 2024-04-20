@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './styles/SearchBar.css';
+import Spotify from '../Spotify';
 
 function SearchBar(props) {
 
